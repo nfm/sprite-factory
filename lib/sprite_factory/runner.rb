@@ -180,7 +180,7 @@ module SpriteFactory
     def style(selector, path, images, &block)
       defaults = Style.generate(style_name, selector, path, images) # must call, even if custom block is given, because it stashes generated css style into image[:style] attributes
       if block_given?
-        yield images.inject({}) {|h,i| h[i[:name].to_sym] = i; h} # provide custom rule builder a hash by image name
+        yield images.inject({}) {|h,i| h[i[:filename].to_sym] = i; h} # provide custom rule builder a hash by image name
       else
         defaults
       end
